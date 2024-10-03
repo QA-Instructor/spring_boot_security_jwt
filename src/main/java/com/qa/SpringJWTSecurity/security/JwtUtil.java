@@ -40,6 +40,11 @@ public class JwtUtil {
 
     public Boolean validateToken(String token, ProfileDTO user){
         String email = extractEmail(token);
+        System.out.println("EXTRACTED EMAIL #########");
+        System.out.println(email);
+        Boolean expiredToken = isTokenExpired(token);
+        System.out.println("IS TOKEN EXPIRED #########");
+        System.out.println(expiredToken);
         return email.equals(user.getEmail()) && !isTokenExpired(token);
     }
 }

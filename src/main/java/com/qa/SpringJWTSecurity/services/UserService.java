@@ -3,6 +3,7 @@ package com.qa.SpringJWTSecurity.services;
 import com.qa.SpringJWTSecurity.dtos.user.ProfileDTO;
 import com.qa.SpringJWTSecurity.entities.user.User;
 import com.qa.SpringJWTSecurity.repos.UserRepo;
+import jdk.swing.interop.SwingInterOpUtils;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class UserService {
 
     public ProfileDTO getProfileByEmail(String email) {
         Optional<User> savedUser = this.repo.findByEmail(email);
-        return this.mapper.map(savedUser, ProfileDTO.class);
+        System.out.println("USER RETRIEVED BY EMAIL /////////////");
+        System.out.println(savedUser.get());
+        return this.mapper.map(savedUser.get(), ProfileDTO.class);
     }
 }

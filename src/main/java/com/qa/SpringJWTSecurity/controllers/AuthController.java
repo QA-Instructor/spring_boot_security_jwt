@@ -40,8 +40,8 @@ public class AuthController {
 
     @GetMapping("/authhealth")
     public String health() {
-        System.out.println("Health");
-        return "AuthController is running";
+        System.out.println("Health XXXXXXXXXX");
+        return "AuthController is running. This is a secured endpoint.";
     }
 
     @PostMapping("/login")

@@ -27,10 +27,10 @@ public class User implements java.io.Serializable {
 
     @Size(min = 2 , max = 50)
     private String lastName;
-
     @NotNull
     @Size(min = 8)
     private String userPassword;
+
 
     @NotNull
     @Size(min = 7 , max = 50)

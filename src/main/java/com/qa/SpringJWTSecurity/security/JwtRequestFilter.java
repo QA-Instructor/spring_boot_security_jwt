@@ -33,7 +33,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //Maybe use US spelling if error is thrown.
         final String authorisationHeader = request.getHeader("Authorization");
-
+        System.out.println("HEADER ******************");
+        System.out.println(authorisationHeader);
         String email;
         String token;
 
@@ -41,8 +42,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             token = authorisationHeader.substring(7);
             email = jwtUtil.extractEmail(token);
 
+            System.out.println("EMAIL ******************");
+            System.out.println(email);
+
             if (email != null && SecurityContextHolder.getContext().getAuthentication() == null){
                 ProfileDTO user = this.service.getProfileByEmail(email);
+
+                System.out.println("PROFILE ******************");
+                System.out.println(user.toString());
 
                 if (jwtUtil.validateToken(token, user)){
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, null, null);
